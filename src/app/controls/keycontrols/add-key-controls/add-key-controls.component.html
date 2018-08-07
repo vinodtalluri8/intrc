@@ -1,0 +1,112 @@
+<div class="row">
+  <div class="col-sm-12 col-md-12 col-lg-12">
+    <app-breadcrumbs [items]='itemsPath'></app-breadcrumbs>
+  </div>
+</div>
+<div class="panel panel-default">
+  <div class="panel-heading section-padding">
+    <h3 class="panel-title" style="font-size: 24px">Add Key Control</h3>
+  </div>
+  <div class="panel-body section-padding">
+    <div class="row">
+      <div class="col-sm-4 col-md-4 col-lg-4" id="title">
+        <div class="row paddingTopClass">
+          <div class="col-sm-9 col-md-9 col-lg-9 no-padding-left">
+            <label for="title" class="required control-label">Title</label>
+          </div>
+        </div>
+        <div class="row paddingDataClass">
+          <app-input (inputTextSelected)='this.title=$event' #inputTitle [value]='title' maxlength="60"></app-input>
+
+        </div>
+      </div>
+      <div class="col-sm-4 col-md-4 col-lg-4" id="department">
+        <div class="row paddingTopClass">
+          <div class="col-sm-9 col-md-9 col-lg-9">
+            <label class="required control-label">Department</label>
+          </div>
+        </div>
+        <div class="row paddingDataClass">
+          <div class="col-sm-12 col-md-12 col-lg-12">
+            <app-dropdown [datasource]='departments' (selectedItemChange)='this.selectedDepartments = $event' [selectedItem]='selectedDepartments'></app-dropdown>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4 col-md-4 col-lg-4" id="natureOfControls">
+        <div class="row paddingTopClass">
+          <div class="col-sm-12 col-md-12 col-lg-12">
+            <label class="required control-label">Nature Of Controls</label>
+          </div>
+        </div>
+        <div class="row paddingDataClass">
+          <div class="col-sm-12 col-md-12 col-lg-12">
+            <app-dropdown [datasource]='natureOfControls' (selectedItemChange)='this.selectedNatureOfControls = $event' [selectedItem]='selectedNatureOfControls'></app-dropdown>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-4 col-md-4 col-lg-4" id="control">
+        <div class="row paddingTopClass">
+          <div class="col-sm-9 col-md-9 col-lg-9 no-padding-left">
+            <label class="required control-label ">Control</label>
+          </div>
+        </div>
+        <div class="row paddingDataClass">
+          <app-input-text-area rowSize='6' (inputTextAreaSelected)='this.controlText= $event' [value]='controlText' name='control'></app-input-text-area>
+
+        </div>
+      </div>
+      <div class="col-sm-4 col-md-4 col-lg-4" id="category">
+        <div class="row paddingTopClass">
+          <div class="col-sm-9 col-md-9 col-lg-9">
+            <label class="required control-label">Category</label>
+          </div>
+        </div>
+        <div class="row paddingDataClass">
+          <div class="col-sm-12 col-md-12 col-lg-12">
+            <app-multiselect [dataSource]='category' (selectedMultiSelect)='changeCategory($event)' [selectedItems]='selectedCategory'></app-multiselect>
+          </div>
+        </div>
+
+      </div>
+      <div class="col-sm-4 col-md-4 col-lg-4" id="process">
+        <div class="row paddingTopClass">
+          <div class="col-sm-9 col-md-9 col-lg-9">
+            <label class="control-label">Process</label>
+          </div>
+        </div>
+        <div class="row paddingDataClass">
+          <div class="col-sm-12 col-md-12 col-lg-12">
+            <app-multiselect [dataSource]='process' (selectedMultiSelect)='changeProcess($event)' [selectedItems]='selectedProcess'></app-multiselect>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-4 col-md-4 col-lg-4" id="enddate">
+        <div class="row paddingTopClass">
+          <div class="col-sm-9 col-md-9 col-lg-9  no-padding-left">
+            <label class="required control-label">Active Date</label>
+          </div>
+        </div>
+        <div class="row paddingDataClass">
+          <app-calender id="calender" (calenderSelected)='this.activeDate=$event' showIcon='true' yearNavigator='true' monthNavigator='true'
+            yearRange='2000:2030' [inputDate]='activeDate'></app-calender>
+        </div>
+      </div>
+
+    </div>
+    <div class="row paddingButtons">
+      <p-messages [(value)]='msg'></p-messages>
+    </div>
+    <br>
+    <br>
+    <div class="row addKeyControlButtons">
+      <app-button label='Save' (click)='saveKeyControl()' [disabled]='disable()' styleClass='button-action'></app-button>
+      <app-button label='Cancel' (click)='resetAll()' styleClass='button-cancel'></app-button>
+
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,44 @@
+<div class="panel panel-default" style="margin-left:-3px">
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12 padding-left-10">
+            <app-breadcrumbs [items]='itemsPath'></app-breadcrumbs>
+        </div>
+    </div>
+    <div class="panel-heading section-padding">
+        <h3 class="panel-title" style="font-size: 24px">Risk Maintenance</h3>
+    </div>
+    <div class="panel-body section-padding">
+        <div class="align-right">
+            <app-button label='Add a New Risk' routerLink="/riskMaintenance/add" styleClass='button-action'></app-button>
+        </div>
+        <br>
+        <div>
+            <p-table #rskm [columns]="colHeaders" [value]="sales" [responsive]="true" [paginator]="true" [rows]="8" [alwaysShowPaginator]="false"
+                [exportFilename]="this.exportFileName" [loading]="loading" [resizableColumns]="true">
+                <ng-template pTemplate="header" let-columns>
+                    <tr>
+                        <th class="text-center" *ngFor="let col of columns" [style.width]="col.width" [pSortableColumn]="col.field" pResizableColumn>
+                            {{col.header}}
+                        </th>
+                    </tr>
+                    <tr>
+                        <th *ngFor="let col of columns" [style.width]="col.width">
+                            <input *ngIf="col.field == 'brand'" pInputText type="text" placeholder="Filter" (input)="rskm.filter($event.target.value, col.field, col.filterMatchMode)">
+                        </th>
+                    </tr>
+                </ng-template>
+                <ng-template class="text-center" pTemplate="body" let-car>
+                    <tr>
+                        <td class="text-center">{{car.brand}}</td>
+                        <td class="text-center">
+                            <app-button label='Delete' styleClass='button-action'></app-button>
+                        </td>
+                        <td class="text-center">
+                            <app-button label='Update' routerLink="/riskMaintenance/update" styleClass='button-action'></app-button>
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+    </div>
+</div>

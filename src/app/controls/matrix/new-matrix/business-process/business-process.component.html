@@ -1,0 +1,41 @@
+<div class="row">
+  <div class="col-lg-4 col-md-4 col-xs-4">
+    <div>
+      <div class="row paddingTopClass">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+          <label class="required control-label">Business Process</label>
+        </div>
+      </div>
+      <div class="row paddingDataClass">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+          <app-input (inputTextSelected)='this.BusinessProcess=$event' #inputBusinessProcess [value]='BusinessProcess' maxlength="60"></app-input>
+
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="row paddingTopClass">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+          <label class="required control-label">Applicable to</label>
+        </div>
+      </div>
+      <div class="row paddingDataClass">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+
+          <app-dropdown [datasource]='mockDropDownData' (selectedItemChange)='this.selectedApplicableTo = $event' [selectedItem]='selectedApplicableTo'></app-dropdown>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="text-center">
+  <app-button label='Save and Enter Business Activity' (click)="savebusinessProcessForm()" [disabled]='disable()' styleClass='button-action'></app-button>
+</div>
+<br>
+<br>
+<br>
+<br>
+<div class="row addKeyControlButtons">
+  <app-button label='Reset' (click)='resetAll()' styleClass='button-action'></app-button>
+  <app-button label='Cancel' styleClass='button-cancel'></app-button>
+</div>

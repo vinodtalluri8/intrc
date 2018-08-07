@@ -1,0 +1,22 @@
+.paddingTopClass {
+    padding-top: 10px;
+}
+
+.ui-dropdown .ui-dropdown-panel {
+    min-width: 100%;
+    width: max-content;
+}
+
+.section-padding {
+    padding-top: 9px;
+    margin-left: -43px;
+    margin-top: -2px;
+}
+
+.push-right {
+    float: right;
+}
+
+.panel-title {
+    padding-left: 53px;
+}

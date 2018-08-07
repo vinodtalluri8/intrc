@@ -1,0 +1,41 @@
+<div class="panel panel-default" style="margin-left:-3px">
+  <div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12 padding-left-10">
+      <app-breadcrumbs [items]='itemsPath'></app-breadcrumbs>
+    </div>
+  </div>
+  <div class="panel-heading section-padding">
+    <h3 class="panel-title" style="font-size: 24px">New Risk</h3>
+  </div>
+  <div class="panel-body section-padding">
+    <div class="row">
+      <div>
+        <label class="control-label">Risk Category</label>
+      </div>
+      <div class="col-5">
+        <app-input (inputTextSelected)='this.riskCategory=$event' #inputriskCategory [value]='riskCategory' maxlength="60"></app-input>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div>
+        <label class="control-label">Type of Risk &nbsp;&nbsp;</label>
+      </div>
+      <div class="col-5">
+        <app-dropdown [datasource]='mockDropDownData' (selectedItemChange)='this.typeOfRisk = $event' [selectedItem]='typeOfRisk'></app-dropdown>
+      </div>
+    </div>
+    <br>
+    <div class="text-center">
+      <app-button label="Update" styleClass='button-action' (click)="saveData()" [disabled]='disable()'></app-button>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="row addKeyControlButtons">
+      <app-button label='Reset' (click)='resetAll()' styleClass='button-action'></app-button>
+      <app-button label='Cancel' styleClass='button-cancel'></app-button>
+    </div>
+  </div>
+</div>

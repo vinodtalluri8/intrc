@@ -1,0 +1,64 @@
+<div class="panel panel-default" style="margin-left:-3px">
+  <div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12 padding-left-10">
+      <app-breadcrumbs [items]='itemsPath'></app-breadcrumbs>
+    </div>
+  </div>
+  <div class="panel-heading section-padding">
+    <h3 class="panel-title" style="font-size: 24px">Select a Matrix</h3>
+  </div>
+  <div class="panel-body section-padding">
+    <div class="row">
+      <div class="col-lg-4 col-md-4 col-xs-4">
+        <div>
+          <div class="row paddingTopClass">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+              <label class="control-label">Group</label>
+            </div>
+          </div>
+          <div class="row paddingDataClass">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+              <app-dropdown [datasource]='mockDropDownData' (selectedItemChange)='this.selectedGroup = $event' [selectedItem]='selectedGroup'></app-dropdown>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="row paddingTopClass">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+              <label class="required control-label">Matrix Type</label>
+            </div>
+          </div>
+          <div class="row paddingDataClass">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+              <app-dropdown [datasource]='mockDropDownData' (selectedItemChange)='this.matrixType = $event' [selectedItem]='matrixType'></app-dropdown>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="row paddingTopClass">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+              <label class="required control-label">Internal Control</label>
+            </div>
+          </div>
+          <div class="row paddingDataClass">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+              <app-dropdown [datasource]='mockDropDownData' (selectedItemChange)='this.internalControl = $event' [selectedItem]='internalControl'></app-dropdown>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="text-center">
+      <app-button label="View Internal Control Matrix" styleClass='button-action' (click)="saveData()" [disabled]='disable()'></app-button>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="row addKeyControlButtons">
+      <app-button label='Reset' (click)='resetAll()' styleClass='button-action'></app-button>
+      &nbsp;&nbsp;&nbsp;
+      <app-button label='Cancel' styleClass='button-cancel'></app-button>
+    </div>
+  </div>
+</div>

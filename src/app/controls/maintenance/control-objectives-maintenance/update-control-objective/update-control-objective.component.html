@@ -1,0 +1,84 @@
+<div class="panel panel-default" style="margin-left:-3px">
+  <div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12 padding-left-10">
+      <app-breadcrumbs [items]='itemsPath'></app-breadcrumbs>
+    </div>
+  </div>
+  <div class="panel-heading section-padding">
+    <h3 class="panel-title" style="font-size: 24px">Control Objectives Update</h3>
+  </div>
+  <div class="panel-body section-padding">
+    <div class="row">
+      <div class="col-lg-4 col-md-4 col-xs-4">
+        <div>
+          <div class="row paddingTopClass">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+              <label class="control-label">Id :101</label>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="row paddingTopClass">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+              <label class="control-label">Program</label>
+            </div>
+          </div>
+          <div class="row paddingDataClass">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+              <app-dropdown [datasource]='mockDropDownData' (selectedItemChange)='this.selectedProgram = $event' [selectedItem]='selectedProgram'></app-dropdown>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="row paddingTopClass">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+              <label class="control-label">Title</label>
+            </div>
+          </div>
+          <div class="row paddingDataClass">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+              <app-input (inputTextSelected)='this.title=$event' #inputtitle [value]='title' maxlength="60"></app-input>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="row paddingTopClass">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+              <label class="control-label">Risk Category / Type</label>
+            </div>
+          </div>
+          <div class="row paddingDataClass">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+              <app-multiselect [dataSource]='mockMultiDropDownData' (selectedMultiSelect)='changeRiskCategory($event)' [selectedItems]='selectedRiskCategory'></app-multiselect>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-4 col-xs-4">
+        <div>
+          <div class="row paddingTopClass">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+              <label class="control-label">Description</label>
+            </div>
+          </div>
+          <div class="row paddingDataClass">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+              <app-input-text-area rowSize='6' (inputTextAreaSelected)='this.description = $event' [value]='description' name='description'></app-input-text-area>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="text-center">
+      <app-button label="Update" styleClass='button-action' (click)="updateData()" [disabled]='disable()'></app-button>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="row addKeyControlButtons">
+      <app-button label='Reset' (click)='resetAll()' styleClass='button-action'></app-button>
+      <app-button label='Cancel' styleClass='button-cancel'></app-button>
+    </div>
+  </div>
+</div>
