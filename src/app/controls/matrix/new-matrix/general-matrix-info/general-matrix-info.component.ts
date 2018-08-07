@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatrixService } from '../../services/matrix.service';
 import { Router } from '@angular/router';
+import { ConfirmationService } from 'primeng/api';
+
 @Component({
   selector: 'app-general-matrix-info',
   templateUrl: './general-matrix-info.component.html',
@@ -25,7 +27,8 @@ export class GeneralMatrixInfoComponent implements OnInit {
   matrixTypeDropdown;
   relatedTechnology;
 
-  constructor(private fb: FormBuilder, private matrixService: MatrixService, private router: Router) {
+  constructor(private fb: FormBuilder, private matrixService: MatrixService, private router: Router,
+    private confirmationService: ConfirmationService) {
   }
   ngOnInit() {
     this.matrixTypeDropdown = [{
@@ -131,6 +134,21 @@ export class GeneralMatrixInfoComponent implements OnInit {
       };
     // }
     console.log('data.......', this.dataJson);
+  }
+
+  showCancelPopup(){
+    //   console.log('Clicked cancel.....');
+    //   this.confirmationService.confirm({
+    //   message: 'Are you sure you want to delete the record?',
+    //   header: 'Delete Confirmation',
+    //   icon: 'fa fa-trash',
+    //   accept: () => {
+    //     console.log('accepted.....');
+    //   },
+    //   reject: () => {
+    //     console.log('rejected.....');
+    //   }
+    // });
   }
 
 }

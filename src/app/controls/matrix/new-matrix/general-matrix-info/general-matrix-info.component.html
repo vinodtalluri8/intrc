@@ -58,7 +58,7 @@
       </div>
       <div class="row paddingDataClass">
         <div class="col-sm-12 col-md-12 col-lg-12">
-          <app-multiselect [dataSource]='mockMultiDropDownData' (selectedMultiSelect)='changeCertificationResponsibility($event)' [selectedItems]='selectedCertificationResponsibility'></app-multiselect>
+          <app-multiselect multiselectheader ="Certification Responsibility" [dataSource]='mockMultiDropDownData' (selectedMultiSelect)='changeCertificationResponsibility($event)' [selectedItems]='selectedCertificationResponsibility'></app-multiselect>
         </div>
       </div>
     </div>
@@ -82,7 +82,7 @@
       </div>
       <div class="row paddingDataClass">
         <div class="col-sm-12 col-md-12 col-lg-12">
-          <app-multiselect [dataSource]='mockMultiDropDownData' (selectedMultiSelect)='changeselectedRelatedTechnology($event)' [selectedItems]='selectedRelatedTechnology'></app-multiselect>
+          <app-multiselect multiselectheader ="Related Technology" [dataSource]='mockMultiDropDownData' (selectedMultiSelect)='changeselectedRelatedTechnology($event)' [selectedItems]='selectedRelatedTechnology'></app-multiselect>
         </div>
       </div>
     </div>
@@ -108,7 +108,7 @@
       </div>
       <div class="row paddingDataClass">
         <div class="col-sm-12 col-md-12 col-lg-12">
-          <app-multiselect [dataSource]='mockMultiDropDownData' (selectedMultiSelect)='changeselectedRelatedSystems($event)' [selectedItems]='selectedRelatedSystems'></app-multiselect>
+          <app-multiselect multiselectheader ="Related Systems" [dataSource]='mockMultiDropDownData' (selectedMultiSelect)='changeselectedRelatedSystems($event)' [selectedItems]='selectedRelatedSystems'></app-multiselect>
         </div>
       </div>
     </div>
@@ -135,5 +135,5 @@
 <br>
 <div class="row addKeyControlButtons">
   <app-button label='Reset' (click)='resetAll()' styleClass='button-action'></app-button>
-  <app-button label='Cancel' styleClass='button-cancel'></app-button>
+  <app-button label='Cancel' (click)='showCancelPopup()' styleClass='button-cancel'></app-button>
 </div>

@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-12">
     <label for="title" class="control-label">Non Checklist Item:</label>
-    <p-checkbox name="group1" value="checked" label="" inputId="on"></p-checkbox>
+    <p-checkbox name="group1" value="checked" label="" inputId="on" (click)="checklistClicked()"></p-checkbox>
   </div>
 </div>
 <div class="row">
@@ -18,7 +18,7 @@
         </div>
       </div>
     </div>
-    <div>
+    <div *ngIf="!isCheckedChecklist">
       <div class="row paddingTopClass">
         <div class="col-sm-12 col-md-12 col-lg-12">
           <label class="control-label">Group</label>
@@ -38,7 +38,7 @@
       </div>
       <div class="row paddingDataClass">
         <div class="col-sm-12 col-md-12 col-lg-12">
-          <app-multiselect [dataSource]='mockMultiDropDownData' (selectedMultiSelect)='changeAditionalProcedure($event)' [selectedItems]='selectedAditionalProcedure'></app-multiselect>
+          <app-multiselect multiselectheader ="Aditional Procedure" [dataSource]='mockMultiDropDownData' (selectedMultiSelect)='changeAditionalProcedure($event)' [selectedItems]='selectedAditionalProcedure'></app-multiselect>
         </div>
       </div>
     </div>
@@ -68,7 +68,7 @@
     </div>
   </div>
   <div class="col-lg-3 col-md-3 col-xs-3">
-    <div>
+    <div *ngIf="!isCheckedChecklist">
       <div class="row paddingTopClass">
         <div class="col-sm-12 col-md-12 col-lg-12">
           <label class="required control-label">Checklist</label>
@@ -120,7 +120,7 @@
 
   </div>
   <div class="col-lg-3 col-md-3 col-xs-3">
-    <div>
+    <div *ngIf="!isCheckedChecklist">
       <div class="row paddingTopClass">
         <div class="col-sm-12 col-md-12 col-lg-12">
           <label class="required control-label">Control</label>
@@ -140,7 +140,7 @@
       </div>
       <div class="row paddingDataClass">
         <div class="col-sm-12 col-md-12 col-lg-12">
-          <app-multiselect [dataSource]='mockMultiDropDownData' (selectedMultiSelect)='changeselectedElements($event)' [selectedItems]='selectedElements'></app-multiselect>
+          <app-multiselect multiselectheader ="Elements" [dataSource]='mockMultiDropDownData' (selectedMultiSelect)='changeselectedElements($event)' [selectedItems]='selectedElements'></app-multiselect>
         </div>
       </div>
     </div>
@@ -178,7 +178,7 @@
       </div>
       <div class="row paddingDataClass">
         <div class="col-sm-12 col-md-12 col-lg-12">
-          <app-multiselect [dataSource]='mockMultiDropDownData' (selectedMultiSelect)='changeselectedManagementAssertion($event)' [selectedItems]='selectedManagementAssertion'></app-multiselect>
+          <app-multiselect multiselectheader ="Management Assertion" [dataSource]='mockMultiDropDownData' (selectedMultiSelect)='changeselectedManagementAssertion($event)' [selectedItems]='selectedManagementAssertion'></app-multiselect>
         </div>
       </div>
     </div>

@@ -65,7 +65,7 @@
         </div>
         <div class="row paddingDataClass">
           <div class="col-sm-12 col-md-12 col-lg-12">
-            <app-multiselect [dataSource]='category' (selectedMultiSelect)='changeCategory($event)' [selectedItems]='selectedCategory'></app-multiselect>
+            <app-multiselect multiselectheader ="Category" [dataSource]='category' (selectedMultiSelect)='changeCategory($event)' [selectedItems]='selectedCategory'></app-multiselect>
           </div>
         </div>
 
@@ -78,7 +78,7 @@
         </div>
         <div class="row paddingDataClass">
           <div class="col-sm-12 col-md-12 col-lg-12">
-            <app-multiselect [dataSource]='process' (selectedMultiSelect)='changeProcess($event)' [selectedItems]='selectedProcess'></app-multiselect>
+            <app-multiselect multiselectheader ="Process" [dataSource]='process' (selectedMultiSelect)='changeProcess($event)' [selectedItems]='selectedProcess'></app-multiselect>
           </div>
         </div>
       </div>

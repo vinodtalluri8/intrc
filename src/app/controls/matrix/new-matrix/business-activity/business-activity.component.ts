@@ -30,12 +30,12 @@ export class BusinessActivityComponent implements OnInit {
     console.log('radio value', value);
     if (value === 'implemented') {
       this.implemented = false;
-      this.selectedenhancementProject = '';
-      this.trackingNumber = '';
-    } else {
-      this.implemented = true;
       this.selectedenhancementProject = 'defaultdata';
       this.trackingNumber = 'defaultdata';
+    } else {
+      this.implemented = true;
+      this.selectedenhancementProject = '';
+      this.trackingNumber = '';
     }
   }
   preloadData() {
@@ -52,7 +52,7 @@ export class BusinessActivityComponent implements OnInit {
   }
 
   disable() {
-    if ( !this.activity || !this.selectedenhancementProject || !this.trackingNumber) {
+    if ( !this.activity || !this.selectedenhancementProject || !this.trackingNumber || !this.selectedTitle) {
       return true;
     } else {
       return false;

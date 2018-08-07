@@ -22,6 +22,8 @@ import { CheckboxModule } from 'primeng/checkbox';
 import { DialogModule } from 'primeng/dialog';
 import { NewMatrixComponent } from './new-matrix/new-matrix.component';
 import { SelectMatrixComponent } from './select-matrix/select-matrix.component';
+import { ConfirmationService } from 'primeng/api';
+
 
 @NgModule({
   imports: [
@@ -42,6 +44,6 @@ DialogModule
       MatrixTabComponent, RiskAssessmentComponent,
        BusinessActivityComponent, ControlComponent,
         ControlEvidenceComponent, BusinessProcessComponent, NewMatrixComponent, SelectMatrixComponent],
-  providers: [MatrixService]
+  providers: [MatrixService, ConfirmationService]
 })
 export class MatrixModule { }

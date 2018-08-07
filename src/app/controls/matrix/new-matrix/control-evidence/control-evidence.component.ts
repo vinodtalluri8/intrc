@@ -29,12 +29,12 @@ export class ControlEvidenceComponent implements OnInit {
     console.log('radio value', value);
     if (value === 'implemented') {
       this.implemented = false;
-      this.selectedEnhancementProject = '';
-      this.trackingNumber = '';
-    } else {
-      this.implemented = true;
       this.selectedEnhancementProject = 'defaultdata';
       this.trackingNumber = 'defaultdata';
+    } else {
+      this.implemented = true;
+      this.selectedEnhancementProject = '';
+      this.trackingNumber = '';
     }
   }
   preloadData() {
