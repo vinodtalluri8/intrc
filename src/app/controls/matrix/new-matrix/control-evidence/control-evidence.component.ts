@@ -16,22 +16,23 @@ export class ControlEvidenceComponent implements OnInit {
   controlEvidence;
   dataJson;
   implemented;
+  selectedImplementation = 'Will be Implemented';
 
   constructor(private fb: FormBuilder, private matrixService: MatrixService, private router: Router) {
    }
 
   ngOnInit() {
-    this.implemented = false;
+    this.implemented = true;
     this.preloadData();
   }
   checkRadio(value) {
     console.log('radio value', value);
     if (value === 'implemented') {
-      this.implemented = true;
+      this.implemented = false;
       this.selectedEnhancementProject = '';
       this.trackingNumber = '';
     } else {
-      this.implemented = false;
+      this.implemented = true;
       this.selectedEnhancementProject = 'defaultdata';
       this.trackingNumber = 'defaultdata';
     }

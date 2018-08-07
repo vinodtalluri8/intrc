@@ -74,6 +74,18 @@
         </div>
       </div>
     </div>
+    <div *ngIf="relatedTechnology">
+      <div class="row paddingTopClass">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+          <label class="control-label">Related Technology</label>
+        </div>
+      </div>
+      <div class="row paddingDataClass">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+          <app-multiselect [dataSource]='mockMultiDropDownData' (selectedMultiSelect)='changeselectedRelatedTechnology($event)' [selectedItems]='selectedRelatedTechnology'></app-multiselect>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="col-lg-4 col-md-4 col-xs-4">
     <div>
@@ -84,7 +96,7 @@
       </div>
       <div class="row paddingDataClass">
         <div class="col-sm-12 col-md-12 col-lg-12">
-          <app-dropdown [datasource]='mockDropDownData' (selectedItemChange)='this.selectedmatrixType = $event' [selectedItem]='selectedmatrixType'></app-dropdown>
+          <app-dropdown [datasource]='matrixTypeDropdown'  (selectedItemChange)='this.selectedmatrixType = $event;modelChanged()' [selectedItem]='selectedmatrixType'></app-dropdown> 
         </div>
       </div>
     </div>

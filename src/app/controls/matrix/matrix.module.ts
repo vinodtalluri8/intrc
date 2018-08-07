@@ -16,7 +16,7 @@ import { BusinessProcessComponent } from './new-matrix/business-process/business
 import {MultiSelectModule} from 'primeng/multiselect';
 import {RadioButtonModule} from 'primeng/radiobutton';
 import {ButtonModule} from 'primeng/button';
-import {  ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms'; 
 import { MatrixService } from './services/matrix.service';
 import { CheckboxModule } from 'primeng/checkbox';
 import { DialogModule } from 'primeng/dialog';
@@ -32,6 +32,7 @@ import { SelectMatrixComponent } from './select-matrix/select-matrix.component';
     MultiSelectModule,
     RadioButtonModule,
     ButtonModule,
+    FormsModule,
 ReactiveFormsModule,
 CheckboxModule,
 DialogModule

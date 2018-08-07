@@ -17,20 +17,23 @@ export class BusinessActivityComponent implements OnInit {
   trackingNumber;
   implemented;
   dataJson;
+  selectedImplementation = 'Will be Implemented';
 
   constructor(private matrixService: MatrixService, private router: Router) {
    }
 
   ngOnInit() {
-    this.implemented = false;
+    this.implemented = true;
     this.preloadData();
   }
   checkRadio(value) {
     console.log('radio value', value);
     if (value === 'implemented') {
-      this.implemented = true;
-    } else {
       this.implemented = false;
+      this.selectedenhancementProject = '';
+      this.trackingNumber = '';
+    } else {
+      this.implemented = true;
       this.selectedenhancementProject = 'defaultdata';
       this.trackingNumber = 'defaultdata';
     }

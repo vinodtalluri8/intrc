@@ -34,8 +34,8 @@
       </div>
       <div class="row paddingDataClass">
         <div class="col-sm-12 col-md-12 col-lg-12">
-          <p-radioButton name="group1" value="Implemented" label="Implemented" (click)="checkRadio('implemented')"></p-radioButton>
-          <p-radioButton name="group1" value="Will be Implemented" label="Will be Implemented" (click)="checkRadio('implement')"></p-radioButton>
+          <p-radioButton name="group1" value="Implemented" label="Implemented" [(ngModel)]="selectedImplementation" inputId="Implemented" (click)="checkRadio('implemented')"></p-radioButton> 
+          <p-radioButton name="group1" value="Will be Implemented" label="Will be Implemented" [(ngModel)]="selectedImplementation" inputId="Will be Implemented" (click)="checkRadio('implement')"></p-radioButton> 
         </div>
       </div>
     </div>
