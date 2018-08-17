@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatrixService } from '../../services/matrix.service';
 import { Router } from '@angular/router';
+import { MenuItem, SelectItem, Message } from 'primeng/api';
 import { ConfirmationService } from 'primeng/api';
 
 @Component({
@@ -10,7 +11,7 @@ import { ConfirmationService } from 'primeng/api';
   styleUrls: ['./general-matrix-info.component.css']
 })
 export class GeneralMatrixInfoComponent implements OnInit {
-    display: boolean;
+  display: boolean;
   mockDropDownData;
   mockMultiDropDownData;
   selectedGroup;
@@ -27,62 +28,114 @@ export class GeneralMatrixInfoComponent implements OnInit {
   matrixTypeDropdown;
   relatedTechnology;
 
-  constructor(private fb: FormBuilder, private matrixService: MatrixService, private router: Router,
-    private confirmationService: ConfirmationService) {
+  group: SelectItem[];
+  defaultGroup: SelectItem[];
+  businessFunction: SelectItem[];
+  matrixType: SelectItem[];
+  certificationResponsibilityData: SelectItem[];
+  inherenetRiskRatingData: SelectItem[];
+  controlRiskRatingData: SelectItem[];
+  relatedTechnologyData: SelectItem[];
+  relatedSystemsData: SelectItem[];
+
+
+  constructor(private fb: FormBuilder, private matrixService: MatrixService, private router: Router) {
   }
   ngOnInit() {
-    this.matrixTypeDropdown = [{
-      'label': 'Operational',
-      'value': {
-        'id': 1,
-        'name': 'Operational',
-        'code': 'Operational'
-      }
-    },
-    {
-    'label': 'System',
-    'value': {
-      'id': 2,
-      'name': 'System',
-      'code': 'System'
-    }
-  }];
+    // this.matrixTypeDropdown = [{
+    //   'label': 'Operational',
+    //   'value': {
+    //     'id': 1,
+    //     'name': 'Operational',
+    //     'code': 'Operational'
+    //   }
+    // },
+    // {
+    //   'label': 'System',
+    //   'value': {
+    //     'id': 2,
+    //     'name': 'System',
+    //     'code': 'System'
+    //   }
+    // }];
     this.preloadData();
-    this.relatedTechnology = false;
+    // this.relatedTechnology = false;
   }
   preloadData() {
-    this.matrixService.getMatrixData().subscribe(
+    // this.matrixService.getDefaultGroup().subscribe(
+    //   (data) => {
+    //     this.group = data;
+    //     console.log('The selected group is', this.selectedGroup);
+    //   }
+    // );
+
+    this.matrixService.getGroup().subscribe(
       (data) => {
-        this.mockDropDownData = data;
+        this.group = data;
       }
     );
-    this.matrixService.getMatrixMultiSelect().subscribe(
+
+    this.matrixService.getBusinessFunction().subscribe(
       (data) => {
-        this.mockMultiDropDownData = data;
+        this.businessFunction = data;
+      }
+    );
+
+    this.matrixService.getMatrixType().subscribe(
+      (data) => {
+        this.matrixType = data;
+      }
+    );
+
+    this.matrixService.getCertificationResponsibility().subscribe(
+      (data) => {
+        this.certificationResponsibilityData = data;
+      }
+    );
+    this.matrixService.getInherentRiskRating().subscribe(
+      (data) => {
+        this.inherenetRiskRatingData = data;
+      }
+    );
+    this.matrixService.getControlRiskRating().subscribe(
+      (data) => {
+        this.controlRiskRatingData = data;
+      }
+    );
+    this.matrixService.getRelatedTechnology().subscribe(
+      (data) => {
+        this.relatedTechnologyData = data;
+      }
+    );
+    this.matrixService.getRelatedSystem().subscribe(
+      (data) => {
+        this.relatedSystemsData = data;
       }
     );
   }
 
-    modelChanged() {
-      console.log('model changed', this.selectedmatrixType.name);
-      if (this.selectedmatrixType.name === 'System') {
+  modelChanged() {
+    console.log('model changed', this.selectedmatrixType);
+    if (this.selectedmatrixType === 'System') {
       this.relatedTechnology = true;
-      } else {
+      console.log('The Value of related Technology', this.relatedTechnology);
+    } else {
       this.relatedTechnology = false;
-      }
     }
-    displayModel() {
+  }
+  displayModel() {
     this.display = true;
   }
-    /**
-   * This method will assign the changed process value
-   * @param event
-   */
+  /**
+ * This method will assign the changed process value
+ * @param event
+ */
   changeselectedRelatedSystems(event) {
+    console.log('changeSelcected Related system', event[0]);
     if (event === 'none') {
       this.selectedRelatedSystems = [];
     } else {
-      this.selectedRelatedSystems = event;
+      this.selectedRelatedSystems = event['id'];
     }
   }
   changeCertificationResponsibility(event) {
@@ -95,9 +148,9 @@ export class GeneralMatrixInfoComponent implements OnInit {
     }
   }
 
-    /* This method will enable or disable the Save button based on the mandatory fields selected */
+  /* This method will enable or disable the Save button based on the mandatory fields selected */
   disable() {
-    if ( !this.selectedbusinessFunction || !this.selectedmatrixType || !this.matrixName || !this.selectedCertificationResponsibility
+    if (!this.selectedbusinessFunction || !this.selectedmatrixType || !this.matrixName || !this.selectedCertificationResponsibility
       || !this.processOverview) {
       return true;
     } else {
@@ -107,36 +160,37 @@ export class GeneralMatrixInfoComponent implements OnInit {
 
   // /* This method will reset all values to default */
   resetAll() {
-  this.selectedGroup = '';
-  this.matrixName = '';
-  this.processOverview = '';
-  this.selectedbusinessFunction = '';
-  this.selectedCertificationResponsibility = [];
-  this.selectedInherentRiskRating = '';
-  this.selectedmatrixType = '';
-  this.selectedRelatedSystems = [];
-  this.selectedControlRiskRating = '';
-}
+    this.selectedGroup = '';
+    this.matrixName = '';
+    this.processOverview = '';
+    this.selectedbusinessFunction = '';
+    this.selectedCertificationResponsibility = [];
+    this.selectedInherentRiskRating = '';
+    this.selectedmatrixType = '';
+    this.selectedRelatedSystems = [];
+    this.selectedControlRiskRating = '';
+  }
 
   saveKeyControl() {
     // if (!this.disable()) {
-
-      this.dataJson = {
-        'group': this.selectedGroup,
-        'businessFunction': this.selectedbusinessFunction,
-        'matrixType': this.selectedmatrixType,
-        'matrixName': this.matrixName,
-        'certificationResponsibility': this.selectedCertificationResponsibility,
-        'relatedSystems': this.selectedRelatedSystems,
-        'processOverview': this.processOverview,
-        'inherentRiskRating': this.selectedInherentRiskRating,
-        'controlRiskRating': this.selectedControlRiskRating
-      };
+    alert('inside fucntion');
+    this.dataJson = {
+      'group': this.selectedGroup,
+      'businessFunction': this.selectedbusinessFunction,
+      'matrixType': this.selectedmatrixType,
+      'matrixName': this.matrixName,
+      'certificationResponsibility': this.selectedCertificationResponsibility,
+      'relatedSystems': this.selectedRelatedSystems,
+      'processOverview': this.processOverview,
+      'inherentRiskRating': this.selectedInherentRiskRating,
+      'controlRiskRating': this.selectedControlRiskRating
+    };
+    this.matrixService.setMatrixName(this.matrixName);
     // }
     console.log('data.......', this.dataJson);
   }
 
-  showCancelPopup(){
+  showCancelPopup() {
     //   console.log('Clicked cancel.....');
     //   this.confirmationService.confirm({
     //   message: 'Are you sure you want to delete the record?',

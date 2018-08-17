@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-lg-4 col-md-4 col-xs-4">
+  <div class="col-lg-3 col-md-3 col-xs-3">
     <div>
       <div class="row paddingTopClass">
         <div class="col-sm-12 col-md-12 col-lg-12">
@@ -12,70 +12,69 @@
         </div>
       </div>
     </div>
-    <div *ngIf="implemented">
-      <div class="row paddingTopClass">
-        <div class="col-sm-12 col-md-12 col-lg-12">
-          <label class="required control-label">Enhancement Project</label>
-        </div>
-      </div>
-      <div class="row paddingDataClass">
-        <div class="col-sm-12 col-md-12 col-lg-12">
-          <app-dropdown [datasource]='mockDropDownData' (selectedItemChange)='this.selectedEnhancementProject = $event' [selectedItem]='selectedEnhancementProject'></app-dropdown>
-        </div>
-      </div>
-    </div>
   </div>
-  <div class="col-lg-4 col-md-4 col-xs-4">
-    <div>
-      <div class="row paddingTopClass">
-        <div class="col-sm-12 col-md-12 col-lg-12">
-          <label class="control-label">Implementation state</label>
+  <div class="col-lg-3 col-md-3 col-xs-3">
+      <div>
+          <div class="row paddingTopClass">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+              <label class="required control-label">Control Evidence</label>
+            </div>
+          </div>
+          <div class="row paddingDataClass">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+              <app-input-text-area rowSize='8' (inputTextAreaSelected)='this.controlEvidence = $event' [value]='controlEvidence' name='control'></app-input-text-area>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="row paddingDataClass">
-        <div class="col-sm-12 col-md-12 col-lg-12">
-          <p-radioButton name="group1" value="Implemented" label="Implemented" [(ngModel)]="selectedImplementation" inputId="Implemented" (click)="checkRadio('implemented')"></p-radioButton> 
-          <p-radioButton name="group1" value="Will be Implemented" label="Will be Implemented" [(ngModel)]="selectedImplementation" inputId="Will be Implemented" (click)="checkRadio('implement')"></p-radioButton> 
-        </div>
-      </div>
-    </div>
-    <div *ngIf="implemented">
-      <div class="row paddingTopClass">
-        <div class="col-sm-12 col-md-12 col-lg-12">
-          <label class="required control-label">Tracking Number</label>
-        </div>
-      </div>
-      <div class="row paddingDataClass">
-        <div class="col-sm-12 col-md-12 col-lg-12">
-          <app-input (inputTextSelected)='this.trackingNumber = $event' #inputtrackingNumber [value]='trackingNumber' maxlength="60"></app-input>
-        </div>
-      </div>
-    </div>
+    
+    
   </div>
-  <div class="col-lg-4 col-md-4 col-xs-4">
-    <div>
-      <div class="row paddingTopClass">
-        <div class="col-sm-12 col-md-12 col-lg-12">
-          <label class="required control-label">Control Evidence</label>
+  <div class="col-lg-3 col-md-3 col-xs-3">
+      <div>
+          <div class="row paddingTopClass">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+              <label class="control-label">Implementation state</label>
+            </div>
+          </div>
+          <div class="row paddingDataClass">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+              <p-radioButton name="group1" value="Implemented" label="Implemented" [(ngModel)]="selectedImplementation" inputId="Implemented" (click)="checkRadio('implemented')"></p-radioButton> 
+              <p-radioButton name="group1" value="Will be Implemented" label="Will be Implemented" [(ngModel)]="selectedImplementation" inputId="Will be Implemented" (click)="checkRadio('implement')"></p-radioButton> 
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="row paddingDataClass">
-        <div class="col-sm-12 col-md-12 col-lg-12">
-          <app-input-text-area rowSize='6' (inputTextAreaSelected)='this.controlEvidence = $event' [value]='controlEvidence' name='control'></app-input-text-area>
-        </div>
-      </div>
-    </div>
+    
   </div>
+  <div class="col-lg-3 col-md-3 col-xs-3">
+      <div *ngIf="implemented">
+          <div class="row paddingTopClass">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+              <label class="required control-label">Enhancement Project</label>
+            </div>
+          </div>
+          <div class="row paddingDataClass">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+              <app-dropdown [datasource]='mockDropDownData' (selectedItemChange)='this.selectedEnhancementProject = $event' [selectedItem]='selectedEnhancementProject'></app-dropdown>
+            </div>
+          </div>
+        </div>
+      <div *ngIf="implemented">
+          <div class="row paddingTopClass">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+              <label class="required control-label">Tracking Number</label>
+            </div>
+          </div>
+          <div class="row paddingDataClass">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+              <app-input (inputTextSelected)='this.trackingNumber = $event' #inputtrackingNumber [value]='trackingNumber' maxlength="60"></app-input>
+            </div>
+          </div>
+        </div> 
+    </div>
 </div>
-<div class="text-center">
+<div class="row">
   <app-button label='Add more evidence to this Control' [disabled]='disable()' (click)='saveControlEvidenceForm()' styleClass='button-action'></app-button>
   <app-button label='Save and return to Matrix Grid' [disabled]='disable()' (click)='saveControlEvidenceForm()' styleClass='button-action'></app-button>
-</div>
-<br>
-<br>
-<br>
-<br>
-<div class="row addKeyControlButtons">
   <app-button label='Reset' (click)='resetAll()' styleClass='button-action'></app-button>
   <app-button label='Cancel' styleClass='button-cancel'></app-button>
 </div>

@@ -1,5 +1,6 @@
 .paddingTopClass {
     width: 227px;
+    height: 35px;
 }
 
 .paddingButtons {
@@ -76,7 +77,7 @@ app-calender {
 }
 
 .paddingDataClass {
-    padding-bottom: 15px!important;
+    padding-bottom: 0px!important;
     margin-left: 1px;
 }
 

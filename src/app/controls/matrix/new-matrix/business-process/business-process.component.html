@@ -22,20 +22,15 @@
       <div class="row paddingDataClass">
         <div class="col-sm-12 col-md-12 col-lg-12">
 
-          <app-dropdown [datasource]='mockDropDownData' (selectedItemChange)='this.selectedApplicableTo = $event' [selectedItem]='selectedApplicableTo'></app-dropdown>
+          <app-dropdown [datasource]='applicableTo' (selectedItemChange)='this.selectedApplicableTo = $event' [selectedItem]='selectedApplicableTo'></app-dropdown>
         </div>
       </div>
     </div>
   </div>
 </div>
-<div class="text-center">
+<br>
+<div class="row">
   <app-button label='Save and Enter Business Activity' (click)="savebusinessProcessForm()" [disabled]='disable()' styleClass='button-action'></app-button>
-</div>
-<br>
-<br>
-<br>
-<br>
-<div class="row addKeyControlButtons">
   <app-button label='Reset' (click)='resetAll()' styleClass='button-action'></app-button>
   <app-button label='Cancel' styleClass='button-cancel'></app-button>
 </div>

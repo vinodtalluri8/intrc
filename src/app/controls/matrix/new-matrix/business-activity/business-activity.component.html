@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-lg-4 col-md-4 col-xs-4">
+  <div class="col-lg-3 col-md-3 col-xs-3">
     <div>
       <div class="row paddingTopClass">
         <div class="col-sm-12 col-md-12 col-lg-12">
@@ -8,88 +8,88 @@
       </div>
       <div class="row paddingDataClass">
         <div class="col-sm-12 col-md-12 col-lg-12">
-          <app-dropdown [datasource]='mockDropDownData' (selectedItemChange)='this.selectedTitle = $event' [selectedItem]='selectedTitle'></app-dropdown>
+          <app-input (inputTextSelected)='this.selectedTitle = $event' #inputTitle [value]='title' maxlength="60"></app-input>
         </div>
       </div>
     </div>
-    <div>
-      <div class="row paddingTopClass">
-        <div class="col-sm-12 col-md-12 col-lg-12">
-          <label class="required control-label">Activity</label>
-        </div>
-      </div>
-      <div class="row paddingDataClass">
-        <div class="col-sm-12 col-md-12 col-lg-12">
-          <app-input-text-area rowSize='6' (inputTextAreaSelected)='this.activity = $event' [value]='activity' name='activity'></app-input-text-area>
-        </div>
-      </div>
-    </div>
+    
   </div>
-  <div class="col-lg-4 col-md-4 col-xs-4">
-    <div>
-      <div class="row paddingTopClass">
-        <div class="col-sm-12 col-md-12 col-lg-12">
-          <label class="control-label">Sub Activity</label>
+  <div class="col-lg-3 col-md-3 col-xs-3">
+      <div>
+          <div class="row paddingTopClass">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+              <label class="required control-label">Activity</label>
+            </div>
+          </div>
+          <div class="row paddingDataClass">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+              <app-input-text-area rowSize='8' (inputTextAreaSelected)='this.activity = $event' [value]='activity' name='activity'></app-input-text-area>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="row paddingDataClass">
-        <div class="col-sm-12 col-md-12 col-lg-12">
-          <app-input-text-area rowSize='6' (inputTextAreaSelected)='this.subActivity = $event' [value]='subActivity' name='subActivity'></app-input-text-area>
-        </div>
-      </div>
-    </div>
-    <div>
-      <div class="row paddingTopClass">
-        <div class="col-sm-12 col-md-12 col-lg-12">
-          <label class="required control-label">Implementation State</label>
-        </div>
-      </div>
-      <div class="row paddingDataClass">
-        <div class="col-sm-12 col-md-12 col-lg-12">
-
-          <p-radioButton name="group1" value="Implemented" label="Implemented" [(ngModel)]="selectedImplementation" inputId="Implemented" (click)="checkRadio('implemented')"></p-radioButton> 
-          <p-radioButton name="group1" value="Will be Implemented" [(ngModel)]="selectedImplementation" inputId="Will be Implemented" label="Will be Implemented" (click)="checkRadio('implement')"></p-radioButton> 
-
-        </div>
-      </div>
-    </div>
+    
+   
 
   </div>
-  <div class="col-lg-4 col-md-4 col-xs-4">
-    <div *ngIf="implemented">
-      <div class="row paddingTopClass">
-        <div class="col-sm-12 col-md-12 col-lg-12">
-          <label class="required control-label">Enhancement Project</label>
+  <div class="col-lg-3 col-md-3 col-xs-3">
+      <div>
+          <div class="row paddingTopClass">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+              <label class="control-label">Sub Activity</label>
+            </div>
+          </div>
+          <div class="row paddingDataClass">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+              <app-input-text-area rowSize='8' (inputTextAreaSelected)='this.subActivity = $event' [value]='subActivity' name='subActivity'></app-input-text-area>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="row paddingDataClass">
-        <div class="col-sm-12 col-md-12 col-lg-12">
-          <app-dropdown [datasource]='mockDropDownData' (selectedItemChange)='this.selectedenhancementProject = $event' [selectedItem]='selectedenhancementProject'></app-dropdown>
-        </div>
-      </div>
-    </div>
-    <div *ngIf="implemented">
-      <div class="row paddingTopClass">
-        <div class="col-sm-12 col-md-12 col-lg-12">
-          <label class="required control-label">Tracking Number</label>
-        </div>
-      </div>
-      <div class="row paddingDataClass">
-        <div class="col-sm-12 col-md-12 col-lg-12">
-          <app-input (inputTextSelected)='this.trackingNumber=$event' #inputtrackingNumber [value]='trackingNumber' maxlength="60"></app-input>
-        </div>
-      </div>
-    </div>
   </div>
+
+  <div class="col-lg-3 col-md-3 col-xs-3">
+      <div>
+          <div class="row paddingTopClass">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+              <label class="required control-label">Implementation State</label>
+            </div>
+          </div>
+          <div class="row paddingDataClass">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+    
+              <p-radioButton name="group1" value="Implemented" label="Implemented" [(ngModel)]="selectedImplementation" inputId="Implemented" (click)="checkRadio('implemented')"></p-radioButton> 
+              <p-radioButton name="group1" value="Will be Implemented" [(ngModel)]="selectedImplementation" inputId="Will be Implemented" label="Will be Implemented" (click)="checkRadio('implement')"></p-radioButton> 
+    
+            </div>
+          </div>
+        </div>
+      <div *ngIf="implemented">
+        <div class="row paddingTopClass">
+          <div class="col-sm-12 col-md-12 col-lg-12">
+            <label class="required control-label">Enhancement Project</label>
+          </div>
+        </div>
+        <div class="row paddingDataClass">
+          <div class="col-sm-12 col-md-12 col-lg-12">
+            <app-dropdown [datasource]='enhancementProject' (selectedItemChange)='this.selectedenhancementProject = $event' [selectedItem]='selectedenhancementProject'></app-dropdown>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="implemented">
+        <div class="row paddingTopClass">
+          <div class="col-sm-12 col-md-12 col-lg-12">
+            <label class="required control-label">Tracking Number</label>
+          </div>
+        </div>
+        <div class="row paddingDataClass">
+          <div class="col-sm-12 col-md-12 col-lg-12">
+            <app-input (inputTextSelected)='this.trackingNumber=$event' #inputtrackingNumber [value]='trackingNumber' maxlength="60"></app-input>
+          </div>
+        </div>
+      </div>
+    </div>
 </div>
-<div class="text-center">
-  <app-button (click)="savebusinessActivityForm()" [disabled]='disable()' label="Save and Enter Control" styleClass='button-action'></app-button>
-</div>
-<br>
-<br>
-<br>
-<br>
-<div class="row addKeyControlButtons">
+<div class="row">
+  <app-button (click)="savebusinessActivityForm()" [disabled]='disable()' label="Save and Add Control" styleClass='button-action'></app-button>
   <app-button label='Reset' (click)='resetAll()' styleClass='button-action'></app-button>
   <app-button label='Cancel' styleClass='button-cancel'></app-button>
 </div>

@@ -1,5 +1,6 @@
 .paddingTopClass {
     width: 227px;
+    height: 35px;
 }
 
 .paddingButtons {
@@ -26,6 +27,7 @@ app-button {
 }
 
 .control-label {
+    min-width: 120%;
     padding-left: 16px;
     float: left;
     padding-right: 10px;
@@ -76,7 +78,7 @@ app-calender {
 }
 
 .paddingDataClass {
-    padding-bottom: 15px!important;
+    padding-bottom: 0px!important;
     margin-left: 1px;
 }
 
@@ -109,4 +111,23 @@ label {
 .dynamic-height {
     -webkit-transform: translateY(100% - 50px);
     transform: translateY(100% - 50px);
+}
+.moveleft {
+    margin-left: -19px;
+}
+button {
+    background-color: #80b3ff;
+    border:none;
+    color:white;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+    display: inline-block;
+    font-size: 14px;
+    text-decoration: none;
+    border-radius: 3px 3px;
+    line-height: normal;
+}
+.maximum-width{
+    max-width: 100% !important;
 }

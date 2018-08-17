@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
+import { MatrixService } from '../../controls/matrix/services/matrix.service';
 @Component({
   selector: 'app-matrix',
   templateUrl: './matrix.component.html',
@@ -9,7 +10,8 @@ export class MatrixComponent implements OnInit {
   items: MenuItem[];
   itemsPath: MenuItem[];
   home: MenuItem;
-  constructor() {
+  matrixName: string;
+  constructor(private matrixService: MatrixService) {
     this.home = { icon: 'fa fa-home' };
     this.itemsPath = [
       { label: 'Matrix'},
@@ -26,6 +28,7 @@ export class MatrixComponent implements OnInit {
    }
 
   ngOnInit() {
+    this.matrixName = this.matrixService.getMatrixName();
   }
 
 }

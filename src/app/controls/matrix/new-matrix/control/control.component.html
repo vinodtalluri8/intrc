@@ -1,8 +1,10 @@
 <div class="row">
   <div class="col-12">
     <label for="title" class="control-label">Non Checklist Item:</label>
+    <div style="margin-top: 8px">
     <p-checkbox name="group1" value="checked" label="" inputId="on" (click)="checklistClicked()"></p-checkbox>
   </div>
+</div>
 </div>
 <div class="row">
   <div class="col-lg-3 col-md-3 col-xs-3">
@@ -26,7 +28,7 @@
       </div>
       <div class="row paddingDataClass">
         <div class="col-sm-12 col-md-12 col-lg-12">
-          <app-dropdown [datasource]='mockDropDownData' (selectedItemChange)='this.selectedGroup = $event' [selectedItem]='selectedGroup'></app-dropdown>
+          <app-dropdown [datasource]='group' (selectedItemChange)='onChangeGroup($event)' [selectedItem]='selectedGroup'></app-dropdown>
         </div>
       </div>
     </div>
@@ -54,18 +56,7 @@
         </div>
       </div>
     </div>
-    <div *ngIf="implemented">
-      <div class="row paddingTopClass">
-        <div class="col-sm-12 col-md-12 col-lg-12">
-          <label class="required control-label">Tracking Number</label>
-        </div>
-      </div>
-      <div class="row paddingDataClass">
-        <div class="col-sm-12 col-md-12 col-lg-12">
-          <app-input (inputTextSelected)='this.trackingNumber = $event' #inputtrackingNumber [value]='trackingNumber' maxlength="60"></app-input>
-        </div>
-      </div>
-    </div>
+    
   </div>
   <div class="col-lg-3 col-md-3 col-xs-3">
     <div *ngIf="!isCheckedChecklist">
@@ -76,7 +67,7 @@
       </div>
       <div class="row paddingDataClass">
         <div class="col-sm-12 col-md-12 col-lg-12">
-          <app-dropdown [datasource]='mockDropDownData' (selectedItemChange)='this.selectedcheckList = $event' [selectedItem]='selectedcheckList'></app-dropdown>
+          <app-dropdown [datasource]='checklist' (selectedItemChange)='onChangeChecklist($event)' [selectedItem]='selectedcheckList'></app-dropdown>
         </div>
       </div>
     </div>
@@ -88,35 +79,23 @@
       </div>
       <div class="row paddingDataClass">
         <div class="col-sm-12 col-md-12 col-lg-12">
-          <app-dropdown [datasource]='mockDropDownData' (selectedItemChange)='this.selectedFramework = $event' [selectedItem]='selectedFramework'></app-dropdown>
+          <app-dropdown [datasource]='framework' (selectedItemChange)='this.selectedFramework = $event' [selectedItem]='selectedFramework'></app-dropdown>
         </div>
       </div>
     </div>
     <div>
-      <div class="row paddingTopClass">
-        <div class="col-sm-12 col-md-12 col-lg-12">
-          <label class="control-label">Implementation State</label>
+        <div class="row paddingTopClass">
+          <div class="col-sm-12 col-md-12 col-lg-12">
+            <label class="control-label">Management Assertion</label>
+          </div>
+        </div>
+        <div class="row paddingDataClass">
+          <div class="col-sm-12 col-md-12 col-lg-12">
+            <app-multiselect multiselectheader ="Management Assertion" [dataSource]='mockMultiDropDownData' (selectedMultiSelect)='changeselectedManagementAssertion($event)' [selectedItems]='selectedManagementAssertion'></app-multiselect>
+          </div>
         </div>
       </div>
-      <div class="row paddingDataClass">
-        <div class="col-sm-12 col-md-12 col-lg-12">
-          <p-radioButton name="group1" value="Implemented" label="Implemented" [(ngModel)]="selectedImplementation" inputId="Implemented" (click)="checkRadio('implemented')"></p-radioButton> 
-          <p-radioButton name="group1" value="Will be Implemented" [(ngModel)]="selectedImplementation" inputId="Will be Implemented" label="Will be Implemented" (click)="checkRadio('implement')"></p-radioButton> 
-        </div>
-      </div>
-    </div>
-    <div *ngIf="implemented">
-      <div class="row paddingTopClass">
-        <div class="col-sm-12 col-md-12 col-lg-12">
-          <label class="required control-label">Enhancement Project</label>
-        </div>
-      </div>
-      <div class="row paddingDataClass">
-        <div class="col-sm-12 col-md-12 col-lg-12">
-          <app-dropdown [datasource]='mockDropDownData' (selectedItemChange)='this.selectedEnhancementProject = $event' [selectedItem]='selectedEnhancementProject'></app-dropdown>
-        </div>
-      </div>
-    </div>
+    
 
   </div>
   <div class="col-lg-3 col-md-3 col-xs-3">
@@ -128,7 +107,7 @@
       </div>
       <div class="row paddingDataClass">
         <div class="col-sm-12 col-md-12 col-lg-12">
-          <app-dropdown [datasource]='mockDropDownData' (selectedItemChange)='this.selectedControl = $event' [selectedItem]='selectedControl'></app-dropdown>
+          <app-dropdown [datasource]='control' (selectedItemChange)='this.selectedControl = $event' [selectedItem]='selectedControl'></app-dropdown>
         </div>
       </div>
     </div>
@@ -171,28 +150,48 @@
       </div>
     </div>
     <div>
-      <div class="row paddingTopClass">
-        <div class="col-sm-12 col-md-12 col-lg-12">
-          <label class="control-label">Management Assertion</label>
+        <div class="row paddingTopClass">
+          <div class="col-sm-12 col-md-12 col-lg-12">
+            <label class="control-label">Implementation State</label>
+          </div>
+        </div>
+        <div class="row paddingDataClass">
+          <div class="col-sm-12 col-md-12 col-lg-12">
+            <p-radioButton name="group1" value="Implemented" label="Implemented" [(ngModel)]="selectedImplementation" inputId="Implemented" (click)="checkRadio('implemented')"></p-radioButton> 
+            <p-radioButton name="group1" value="Will be Implemented" [(ngModel)]="selectedImplementation" inputId="Will be Implemented" label="Will be Implemented" (click)="checkRadio('implement')"></p-radioButton> 
+          </div>
         </div>
       </div>
-      <div class="row paddingDataClass">
-        <div class="col-sm-12 col-md-12 col-lg-12">
-          <app-multiselect multiselectheader ="Management Assertion" [dataSource]='mockMultiDropDownData' (selectedMultiSelect)='changeselectedManagementAssertion($event)' [selectedItems]='selectedManagementAssertion'></app-multiselect>
+      <div *ngIf="implemented">
+          <div class="row paddingTopClass">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+              <label class="required control-label">Enhancement Project</label>
+            </div>
+          </div>
+          <div class="row paddingDataClass">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+              <app-dropdown [datasource]='mockDropDownData' (selectedItemChange)='this.selectedEnhancementProject = $event' [selectedItem]='selectedEnhancementProject'></app-dropdown>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+      <div *ngIf="implemented">
+          <div class="row paddingTopClass">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+              <label class="required control-label">Tracking Number</label>
+            </div>
+          </div>
+          <div class="row paddingDataClass">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+              <app-input (inputTextSelected)='this.trackingNumber = $event' #inputtrackingNumber [value]='trackingNumber' maxlength="60"></app-input>
+            </div>
+          </div>
+        </div>
+    
 
   </div>
 </div>
-<div class="text-center">
-  <app-button (click)='saveControlForm()' [disabled]='disable()' label="Save and Add evidence to this Control" styleClass='button-action'></app-button>
-</div>
-<br>
-<br>
-<br>
-<br>
-<div class="row addKeyControlButtons">
+<div class="row">
+  <app-button (click)='saveControlForm()' [disabled]='disable()' label="Save and Add evidence" styleClass='button-action'></app-button>
   <app-button label='Reset' (click)='resetAll()' styleClass='button-action'></app-button>
   <app-button label='Cancel' styleClass='button-cancel'></app-button>
 </div>

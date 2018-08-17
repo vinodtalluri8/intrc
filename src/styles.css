@@ -311,3 +311,15 @@ app-input input {
 .mat-button.mat-primary, .mat-icon-button.mat-primary, .mat-stroked-button.mat-primary {
     color: black;
 }
+app-general-matrix-info app-input{
+    width: 100%;
+}
+app-general-matrix-info textarea[_ngcontent-c14] {
+    width: 100%;
+} 
+app-risk-assessment textarea[_ngcontent-c14] {
+    width: 100%;
+}
+app-business-process input[_ngcontent-c13] {
+    width: 100%;
+}

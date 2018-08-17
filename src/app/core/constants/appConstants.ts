@@ -11,9 +11,12 @@ export const appConstants = {
         headers: new HttpHeaders({
             'Content-Type': 'application/json',
             'Access-Control-Request-Method': 'GET',
-            'Access-Control-Request-Headers': '*'
+            'Access-Control-Request-Headers': '*',
+            'Cache-Control': 'no-cache',
+            'Pragma': 'no-cache'
         }),
-        withCredentials: false
+        withCredentials: false,
+        params: {}
     },
     postHeaderOptions: {
         headers: new HttpHeaders({

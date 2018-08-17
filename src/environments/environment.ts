@@ -5,6 +5,8 @@
 
 export const environment = {
   production: false,
-  //serverUrl: 'http://bjavaappd1:8630/divainternalcontrolservice-1.0.0.53-SNAPSHOT'
-  serverUrl: 'http://localhost:8080/divainternalcontrolservice-1.0.0.53-SNAPSHOT'
+  // serverUrl: 'http://bjavaappd1:8630/divainternalcontrolservice-1.0.0.53-SNAPSHOT'
+  // serverUrl: 'http://localhost:8080/divainternalcontrolservice-1.0.0.53-SNAPSHOT'
+  // serverUrl : 'http://localhost:8080/DIVA-CommonService/'
+     serverUrl : 'http://168.66.39.170:8080/DIVA-CommonService/'
 };

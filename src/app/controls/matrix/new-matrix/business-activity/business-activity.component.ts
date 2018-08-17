@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatrixService } from '../../services/matrix.service';
 import { Router } from '@angular/router';
+import { MenuItem, SelectItem, Message } from 'primeng/api';
 
 @Component({
   selector: 'app-business-activity',
@@ -18,6 +19,8 @@ export class BusinessActivityComponent implements OnInit {
   implemented;
   dataJson;
   selectedImplementation = 'Will be Implemented';
+
+  enhancementProject: SelectItem[];
 
   constructor(private matrixService: MatrixService, private router: Router) {
    }
@@ -44,9 +47,9 @@ export class BusinessActivityComponent implements OnInit {
         this.mockDropDownData = data;
       }
     );
-    this.matrixService.getMatrixMultiSelect().subscribe(
+    this.matrixService.getEnhancementProject().subscribe(
       (data) => {
-        this.mockMultiDropDownData = data;
+        this.enhancementProject = data;
       }
     );
   }

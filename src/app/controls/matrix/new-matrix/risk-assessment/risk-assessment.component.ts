@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatrixService } from '../../services/matrix.service';
 import { Router } from '@angular/router';
+import { MenuItem, SelectItem, Message } from 'primeng/api';
 
 @Component({
   selector: 'app-risk-assessment',
@@ -17,21 +18,26 @@ export class RiskAssessmentComponent implements OnInit {
   dataJson;
   driverCategoryJson;
 
+  eventType: SelectItem[];
+  driverCategory: SelectItem[];
+  matrixName: string;
+
   constructor(private fb: FormBuilder, private matrixService: MatrixService, private router: Router) {
   }
 
   ngOnInit() {
     this.preloadData();
+    this.matrixName = this.matrixService.getMatrixName();
   }
   preloadData() {
-    this.matrixService.getMatrixData().subscribe(
+    this.matrixService.getDriverCategory().subscribe(
       (data) => {
-        this.mockDropDownData = data;
+        this.driverCategory = data;
       }
     );
-    this.matrixService.getMatrixMultiSelect().subscribe(
+    this.matrixService.getEventType().subscribe(
       (data) => {
-        this.mockMultiDropDownData = data;
+        this.eventType = data;
       }
     );
   }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatrixService } from '../../services/matrix.service';
 import { Router } from '@angular/router';
+import { MenuItem, SelectItem, Message } from 'primeng/api';
 
 @Component({
   selector: 'app-business-process',
@@ -15,6 +16,8 @@ export class BusinessProcessComponent implements OnInit {
   selectedApplicableTo;
   dataJson;
 
+  applicableTo: SelectItem[];
+
   constructor(private fb: FormBuilder, private matrixService: MatrixService, private router: Router) {
    }
 
@@ -22,9 +25,9 @@ export class BusinessProcessComponent implements OnInit {
     this.preloadData();
   }
   preloadData() {
-    this.matrixService.getMatrixData().subscribe(
+    this.matrixService.getApplicableTo().subscribe(
       (data) => {
-        this.mockDropDownData = data;
+        this.applicableTo = data;
       }
     );
   }

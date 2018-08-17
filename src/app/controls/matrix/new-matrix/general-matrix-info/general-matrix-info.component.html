@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-lg-4 col-md-4 col-xs-4">
+  <div class="col-lg-3 col-md-3 col-xs-3" style="padding-left: 0px">
     <div>
       <div class="row paddingTopClass">
         <div class="col-sm-12 col-md-12 col-lg-12">
@@ -8,48 +8,51 @@
       </div>
       <div class="row paddingDataClass">
         <div class="col-sm-12 col-md-12 col-lg-12">
-          <app-dropdown [datasource]='mockDropDownData' (selectedItemChange)='this.selectedGroup = $event' [selectedItem]='selectedGroup'></app-dropdown>
+          <app-dropdown [datasource]='group' (selectedItemChange)='this.selectedGroup = $event' [selectedItem]='selectedGroup'></app-dropdown>
         </div>
       </div>
     </div>
     <div>
-      <div class="row paddingTopClass">
-        <div class="col-sm-12 col-md-12 col-lg-12">
-          <label class="required control-label">Matrix Name</label>
+        <div class="row paddingTopClass">
+          <div class="col-sm-12 col-md-12 col-lg-12">
+            <label class="required control-label">Business Function</label>
+          </div>
+        </div>
+        <div class="row paddingDataClass">
+          <div class="col-sm-12 col-md-12 col-lg-12">
+            <app-dropdown [datasource]='businessFunction' (selectedItemChange)='this.selectedbusinessFunction = $event' [selectedItem]='selectedbusinessFunction'></app-dropdown>
+          </div>
         </div>
       </div>
-      <div class="row paddingDataClass">
-        <div class="col-sm-12 col-md-12 col-lg-12">
-          <app-input (inputTextSelected)='this.matrixName=$event' #inputmatrixName [value]='matrixName' maxlength="60"></app-input>
+      <div>
+          <div class="row paddingTopClass">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+              <label class="control-label">Inherent Risk Rating</label>
+            </div>
+          </div>
+          <div class="row paddingDataClass">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+              <app-dropdown [datasource]='inherenetRiskRatingData' (selectedItemChange)='this.selectedInherentRiskRating = $event' [selectedItem]='selectedInherentRiskRating'></app-dropdown>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-    <div>
-      <div class="row paddingTopClass">
-        <div class="col-sm-12 col-md-12 col-lg-12">
-          <label class="required control-label">Process Overview</label>
-        </div>
-      </div>
-      <div class="row paddingDataClass">
-        <div class="col-sm-12 col-md-12 col-lg-12">
-          <app-input-text-area rowSize='6' (inputTextAreaSelected)='this.processOverview = $event' [value]='processOverview' name='control'></app-input-text-area>
-        </div>
-      </div>
-    </div>
+    
+    
   </div>
-  <div class="col-lg-4 col-md-4 col-xs-4">
-    <div>
-      <div class="row paddingTopClass">
-        <div class="col-sm-12 col-md-12 col-lg-12">
-          <label class="required control-label">Business Function</label>
+  <div class="col-lg-3 col-md-3 col-xs-3">
+      <div>
+          <div class="row paddingTopClass">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+              <label class="required control-label">Matrix Name</label>
+            </div>
+          </div>
+          <div class="row paddingDataClass">
+            <div class="col-sm-12 col-md-12 col-lg-12 maximum-width">
+              <app-input (inputTextSelected)='this.matrixName=$event' #inputmatrixName [value]='matrixName' maxlength="60" style="min-width: 100%;"></app-input>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="row paddingDataClass">
-        <div class="col-sm-12 col-md-12 col-lg-12">
-          <app-dropdown [datasource]='mockDropDownData' (selectedItemChange)='this.selectedbusinessFunction = $event' [selectedItem]='selectedbusinessFunction'></app-dropdown>
-        </div>
-      </div>
-    </div>
+    
     <div>
       <div class="row paddingTopClass">
         <div class="col-sm-12 col-md-12 col-lg-12">
@@ -58,36 +61,43 @@
       </div>
       <div class="row paddingDataClass">
         <div class="col-sm-12 col-md-12 col-lg-12">
-          <app-multiselect multiselectheader ="Certification Responsibility" [dataSource]='mockMultiDropDownData' (selectedMultiSelect)='changeCertificationResponsibility($event)' [selectedItems]='selectedCertificationResponsibility'></app-multiselect>
+          <app-multiselect multiselectheader="Certification Responsibility" [dataSource]='certificationResponsibilityData' (selectedMultiSelect)='changeCertificationResponsibility($event)'
+            [selectedItems]='selectedCertificationResponsibility'></app-multiselect>
         </div>
       </div>
     </div>
+    
     <div>
       <div class="row paddingTopClass">
         <div class="col-sm-12 col-md-12 col-lg-12">
-          <label class="control-label">Inherent Risk Rating</label>
+          <label class="control-label">Control Risk Rating</label>
         </div>
       </div>
       <div class="row paddingDataClass">
         <div class="col-sm-12 col-md-12 col-lg-12">
-          <app-dropdown [datasource]='mockDropDownData' (selectedItemChange)='this.selectedInherentRiskRating = $event' [selectedItem]='selectedInherentRiskRating'></app-dropdown>
-        </div>
-      </div>
-    </div>
-    <div *ngIf="relatedTechnology">
-      <div class="row paddingTopClass">
-        <div class="col-sm-12 col-md-12 col-lg-12">
-          <label class="control-label">Related Technology</label>
-        </div>
-      </div>
-      <div class="row paddingDataClass">
-        <div class="col-sm-12 col-md-12 col-lg-12">
-          <app-multiselect multiselectheader ="Related Technology" [dataSource]='mockMultiDropDownData' (selectedMultiSelect)='changeselectedRelatedTechnology($event)' [selectedItems]='selectedRelatedTechnology'></app-multiselect>
+          <app-dropdown [datasource]='controlRiskRatingData' (selectedItemChange)='this.selectedRelatedTechnology = $event' [selectedItem]='selectedRelatedTechnology'></app-dropdown>
         </div>
       </div>
     </div>
   </div>
-  <div class="col-lg-4 col-md-4 col-xs-4">
+
+  <div class="col-lg-3 col-md-3 col-xs-3">
+      <div>
+          <div class="row paddingTopClass">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+              <label class="required control-label">Process Overview</label>
+            </div>
+          </div>
+          <div class="row paddingDataClass">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+              <app-input-text-area rowSize='8' (inputTextAreaSelected)='this.processOverview = $event' [value]='processOverview' name='control'></app-input-text-area>
+            </div>
+          </div>
+        </div>
+    </div>
+
+
+  <div class="col-lg-3 col-md-3 col-xs-3">
     <div>
       <div class="row paddingTopClass">
         <div class="col-sm-12 col-md-12 col-lg-12">
@@ -96,7 +106,7 @@
       </div>
       <div class="row paddingDataClass">
         <div class="col-sm-12 col-md-12 col-lg-12">
-          <app-dropdown [datasource]='matrixTypeDropdown'  (selectedItemChange)='this.selectedmatrixType = $event;modelChanged()' [selectedItem]='selectedmatrixType'></app-dropdown> 
+          <app-dropdown [datasource]='matrixType' (selectedItemChange)='this.selectedmatrixType = $event;modelChanged()' [selectedItem]='selectedmatrixType'></app-dropdown>
         </div>
       </div>
     </div>
@@ -108,32 +118,28 @@
       </div>
       <div class="row paddingDataClass">
         <div class="col-sm-12 col-md-12 col-lg-12">
-          <app-multiselect multiselectheader ="Related Systems" [dataSource]='mockMultiDropDownData' (selectedMultiSelect)='changeselectedRelatedSystems($event)' [selectedItems]='selectedRelatedSystems'></app-multiselect>
+          <app-multiselect multiselectheader="Related Systems" [dataSource]='relatedSystemsData' (selectedMultiSelect)='changeselectedRelatedSystems($event)'
+            [selectedItems]='selectedRelatedSystems'></app-multiselect>
         </div>
       </div>
     </div>
-    <div>
+    <div *ngIf="relatedTechnology">
       <div class="row paddingTopClass">
         <div class="col-sm-12 col-md-12 col-lg-12">
-          <label class="control-label">Control Risk Rating</label>
+          <label class="control-label">Related Technology</label>
         </div>
       </div>
       <div class="row paddingDataClass">
         <div class="col-sm-12 col-md-12 col-lg-12">
-          <app-dropdown [datasource]='mockDropDownData' (selectedItemChange)='this.selectedControlRiskRating = $event' [selectedItem]='selectedControlRiskRating'></app-dropdown>
+          <app-multiselect [dataSource]='relatedTechnologyData' (selectedMultiSelect)='changeselectedRelatedTechnology($event)' [selectedItems]='selectedRelatedTechnology'></app-multiselect>
         </div>
       </div>
+
     </div>
   </div>
-</div>
-<div class="text-center">
-  <app-button (click)='saveKeyControl()' [disabled]='disable()' label="Save and Enter Risks" styleClass='button-action'></app-button>
-</div>
-<br>
-<br>
-<br>
-<br>
-<div class="row addKeyControlButtons">
-  <app-button label='Reset' (click)='resetAll()' styleClass='button-action'></app-button>
-  <app-button label='Cancel' (click)='showCancelPopup()' styleClass='button-cancel'></app-button>
-</div>
+  <div class="row col-sm-12 col-md-12 col-lg-12 moveleft">
+    <!-- <app-button (click)='saveKeyControl()' [disabled]='disable()' label="Save and Add Risks" styleClass='button-action'></app-button> -->
+    <button (click)='saveKeyControl()' [disabled]='disable()' label="Save and Add Risks" style="margin-left: 20px">Save and Add Risks</button>
+    <app-button label='Reset' (click)='resetAll()' styleClass='button-action'></app-button>
+    <app-button label='Cancel' (click)='showCancelPopup()' styleClass='button-cancel'></app-button>
+  </div>

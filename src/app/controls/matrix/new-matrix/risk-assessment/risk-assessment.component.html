@@ -8,47 +8,47 @@
       </div>
       <div class="row paddingDataClass">
         <div class="col-sm-12 col-md-12 col-lg-12">
-          <app-input-text-area rowSize='6' (inputTextAreaSelected)='this.driverDescription = $event' [value]='driverDescription' name='driverDescription'></app-input-text-area>
+          <app-input-text-area rowSize='10' (inputTextAreaSelected)='this.driverDescription = $event' [value]='driverDescription' name='driverDescription'></app-input-text-area>
         </div>
       </div>
     </div>
-    <div>
-      <div class="row paddingTopClass">
-        <div class="col-sm-12 col-md-12 col-lg-12">
-          <label class="required control-label">Driver Category</label>
-        </div>
-      </div>
-      <div class="row paddingDataClass">
-        <div class="col-sm-12 col-md-12 col-lg-12">
-          <app-multiselect multiselectheader ="Driver Category" [dataSource]='mockMultiDropDownData' (selectedMultiSelect)='changeDriverCategory($event)' [selectedItems]='selectedDriverCategory'></app-multiselect>
-        </div>
-      </div>
-    </div>
-    <div>
-      <div class="row paddingTopClass">
-        <div class="col-sm-12 col-md-12 col-lg-12">
-          <label class="required control-label">Event Type</label>
-        </div>
-      </div>
-      <div class="row paddingDataClass">
-        <div class="col-sm-12 col-md-12 col-lg-12">
-          <app-dropdown [datasource]='mockDropDownData' (selectedItemChange)='this.selectedEventType = $event' [selectedItem]='selectedEventType'></app-dropdown>
-        </div>
-      </div>
-    </div>
+    
   </div>
+  <div class="col-lg-4 col-md-4 col-xs-4">
+      <div>
+        <div class="row paddingTopClass">
+          <div class="col-sm-12 col-md-12 col-lg-12">
+            <label class="required control-label">Driver Category</label>
+          </div>
+        </div>
+        <div class="row paddingDataClass">
+          <div class="col-sm-12 col-md-12 col-lg-12">
+            <app-multiselect multiselectheader ="Driver Category" [dataSource]='driverCategory' (selectedMultiSelect)='changeDriverCategory($event)' [selectedItems]='selectedDriverCategory'></app-multiselect>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-xs-4">
+        <div>
+          <div class="row paddingTopClass">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+              <label class="required control-label">Event Type</label>
+            </div>
+          </div>
+          <div class="row paddingDataClass">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+              <app-dropdown [datasource]='eventType' (selectedItemChange)='this.selectedEventType = $event' [selectedItem]='selectedEventType'></app-dropdown>
+            </div>
+          </div>
+        </div>
+      </div>
 </div>
 <br>
-<div class="text-center">
-  <app-button label='Save and Enter Business Process' (click)="saveriskAssessmentForm()" [disabled]='disable()' styleClass='button-action'></app-button>
-  <app-button label='Save and Add Additional Risks' (click)="saveriskAssessmentForm()" [disabled]='disable()' styleClass='button-action'></app-button>
-  <app-button label='I have no risks to enter' styleClass='button-action'></app-button>
-</div>
-<br>
-<br>
-<br>
-<br>
-<div class="row addKeyControlButtons">
+<div class="row">
+  <app-button label='Save and Add Business Process' (click)="saveriskAssessmentForm()" [disabled]='disable()' styleClass='button-action'></app-button>
+  <app-button label='Save and Add Risks' (click)="saveriskAssessmentForm()" [disabled]='disable()' styleClass='button-action'></app-button>
+  <app-button label='No risks' styleClass='button-action'></app-button>
   <app-button label='Reset' (click)='resetAll()' styleClass='button-action'></app-button>
   <app-button label='Cancel' styleClass='button-cancel'></app-button>
+  <br><br>
 </div>
